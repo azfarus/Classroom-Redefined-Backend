@@ -17,6 +17,14 @@ public class Student  {
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
     private  Long id;
+
+
+
+    private Long studid;
+
+    private String password;
+    private String name;
+
     private float cgpa;
 
     @ManyToMany(fetch = FetchType.EAGER,mappedBy = "students")

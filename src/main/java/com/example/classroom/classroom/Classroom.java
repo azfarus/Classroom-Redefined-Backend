@@ -16,9 +16,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class Classroom implements Serializable {
-    public Long getId() {
-        return id;
-    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,15 +28,7 @@ public class Classroom implements Serializable {
             joinColumns = @JoinColumn(name = "classroom_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"))
     private Set<Student> students = new HashSet<Student>();
-    public void setDept(String dept) {
-        this.dept = dept;
-    }
 
-
-
-    public Set<Student> getStudents() {
-        return students;
-    }
 
 
 }

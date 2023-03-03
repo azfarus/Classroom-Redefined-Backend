@@ -15,14 +15,13 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 public class Controller1 {
-    private static final String template = "Hello, %s!";
-    private final AtomicLong counter = new AtomicLong();
+
 
     @Autowired
-    StudentRepository stud ;
+    private StudentRepository stud ;
 
     @Autowired
-    ClassroomRepository clas ;
+    private ClassroomRepository clas ;
 
     @PostMapping("/insert")
     public String insert_student(@RequestBody StudentDTO student){
@@ -40,39 +39,39 @@ public class Controller1 {
 
     }
 
-    @GetMapping("/find")
-    @ResponseBody
-    public StudentDTO find_student(@RequestBody StudentDTO student){
+//    @GetMapping("/find")
+//    @ResponseBody
+//    public StudentDTO find_student(@RequestBody StudentDTO student){
+//
+//
+//        Optional<Student> s = stud.findById(student.getId());
+//
+//        //s.get().getClassrooms().addAll(clas.findClassroomsByStudents(s.get()));
+//        StudentDTO sdto = new StudentDTO(s.get());
+//        return sdto;
+//
+//
+//
+//
+//
+//    }
 
-
-        Optional<Student> s = stud.findById(student.getId());
-
-        //s.get().getClassrooms().addAll(clas.findClassroomsByStudents(s.get()));
-        StudentDTO sdto = new StudentDTO(s.get());
-        return sdto;
-
-
-
-
-
-    }
-
-    @GetMapping("/findclass")
-    @ResponseBody
-    public ClassroomDTO find_student(@RequestBody ClassroomDTO clss){
-
-
-        Optional<Classroom> s = clas.findById(clss.getId());
-
-
-        ClassroomDTO cdto = new ClassroomDTO(s.get());
-        return cdto;
-
-
-
-
-
-    }
+//    @GetMapping("/findclass")
+//    @ResponseBody
+//    public ClassroomDTO find_student(@RequestBody ClassroomDTO clss){
+//
+//
+//        Optional<Classroom> s = clas.findById(clss.getId());
+//
+//
+//        ClassroomDTO cdto = new ClassroomDTO(s.get());
+//        return cdto;
+//
+//
+//
+//
+//
+//    }
 
 
 }
