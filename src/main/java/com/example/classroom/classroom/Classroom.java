@@ -1,10 +1,11 @@
-package com.example.arparina.classroom;
+package com.example.classroom.classroom;
 
 
 
 
-import com.example.arparina.student.Student;
+import com.example.classroom.student.Student;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import java.util.Set;
 
 @Entity
 @Getter
+@Setter
 public class Classroom implements Serializable {
     public Long getId() {
         return id;

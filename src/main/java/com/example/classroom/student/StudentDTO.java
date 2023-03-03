@@ -1,13 +1,19 @@
-package com.example.arparina.student;
+package com.example.classroom.student;
 
 
-import com.example.arparina.classroom.Classroom;
+import com.example.classroom.classroom.Classroom;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
 
 @Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class StudentDTO  {
 
 
@@ -17,13 +23,7 @@ public class StudentDTO  {
 
     private ArrayList<Long> classroom_id = new ArrayList<>();
 
-    public void setCgpa(float cgpa) {
-        this.cgpa = cgpa;
-    }
 
-    public float getCgpa() {
-        return cgpa;
-    }
 
     public StudentDTO(Student s) {
 
@@ -38,16 +38,6 @@ public class StudentDTO  {
 
     }
 
-    public StudentDTO() {
-        this.id =  (long)0;
-        this.cgpa = 0;
-        classroom_id = new ArrayList<>();
-
-    }
-
-    public Long getId() {
-        return id;
-    }
 
 
 

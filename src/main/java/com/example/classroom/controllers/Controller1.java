@@ -1,11 +1,11 @@
-package com.example.arparina.controllers;
+package com.example.classroom.controllers;
 
-import com.example.arparina.classroom.Classroom;
-import com.example.arparina.classroom.ClassroomDTO;
-import com.example.arparina.classroom.ClassroomRepository;
-import com.example.arparina.student.Student;
-import com.example.arparina.student.StudentDTO;
-import com.example.arparina.student.StudentRepository;
+import com.example.classroom.classroom.Classroom;
+import com.example.classroom.classroom.ClassroomDTO;
+import com.example.classroom.classroom.ClassroomRepository;
+import com.example.classroom.student.Student;
+import com.example.classroom.student.StudentDTO;
+import com.example.classroom.student.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

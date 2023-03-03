@@ -1,7 +1,7 @@
-package com.example.arparina.classroom;
+package com.example.classroom.classroom;
 
 
-import com.example.arparina.student.Student;
+import com.example.classroom.student.Student;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

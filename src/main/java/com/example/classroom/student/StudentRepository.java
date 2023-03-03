@@ -1,4 +1,4 @@
-package com.example.arparina.student;
+package com.example.classroom.student;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

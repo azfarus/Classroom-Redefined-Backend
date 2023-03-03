@@ -1,6 +1,6 @@
-package com.example.arparina.classroom;
+package com.example.classroom.classroom;
 
-import com.example.arparina.student.Student;
+import com.example.classroom.student.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
