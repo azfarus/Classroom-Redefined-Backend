@@ -17,11 +17,18 @@ import java.util.Set;
 public class ClassroomDTO {
     private Long id;
     private String dept;
+
+    private  int coursecode;
+    private int semester;
+
+    private boolean archived;
     private Set<Long> students = new HashSet<>();
 
     public  ClassroomDTO(Classroom clss){
         this.id = clss.getId();
         this.dept = clss.getDept();
+        this.coursecode = clss.getCoursecode();
+        this.semester = clss.getSemester();
 
         System.out.println(clss.getStudents().isEmpty());
         for (Student x: clss.getStudents()) {

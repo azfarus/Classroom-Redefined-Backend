@@ -18,10 +18,19 @@ public class StudentDTO  {
 
 
 
-    private  Long studid;
-    private float cgpa;
+    private  Long id;
+
+
+
+    private Long studid;
+    private int semester;
+
 
     private String name;
+
+    private  String dept;
+
+    private float cgpa;
     private ArrayList<Long> classroom_id = new ArrayList<>();
 
 
@@ -31,6 +40,9 @@ public class StudentDTO  {
         this.studid = s.getStudid();
         this.cgpa = s.getCgpa();
         this.name = s.getName();
+        this.dept = s.getDept();
+        this.semester = s.getSemester();
+
 
         System.out.println(s.getClassrooms().isEmpty());
         for (Classroom c: s.getClassrooms()) {

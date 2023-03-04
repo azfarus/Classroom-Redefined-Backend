@@ -12,4 +12,5 @@ public interface ClassroomRepository extends JpaRepository<Classroom , Long> {
 
 
     List<Classroom> findClassroomsByStudents(Student k);
+    List<Classroom> findClassroomsByDeptAndSemesterAndArchived(String dept ,int semester , boolean archived);
 }

@@ -21,9 +21,12 @@ public class Student  {
 
 
     private Long studid;
+    private int semester;
 
     private String password;
     private String name;
+
+    private  String dept;
 
     private float cgpa;
 

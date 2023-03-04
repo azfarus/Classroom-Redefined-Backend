@@ -23,6 +23,11 @@ public class Classroom implements Serializable {
     private Long id;
     private String dept;
 
+    private  int coursecode;
+    private int semester;
+
+    private boolean archived;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "classroom_student",
             joinColumns = @JoinColumn(name = "classroom_id", referencedColumnName = "id"),
