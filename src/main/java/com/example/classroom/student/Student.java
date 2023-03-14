@@ -30,6 +30,8 @@ public class Student  {
 
     private float cgpa;
 
+    private int session;
+
     @ManyToMany(fetch = FetchType.EAGER,mappedBy = "students")
     private Set<Classroom> classrooms = new HashSet<>();
 

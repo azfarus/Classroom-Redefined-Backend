@@ -1,9 +1,7 @@
 package com.example.classroom.student;
 
-import com.google.gson.Gson;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 
 import java.util.List;
 import java.util.Optional;

@@ -22,6 +22,10 @@ public class ClassroomDTO {
     private int semester;
 
     private boolean archived;
+
+    private int session;
+
+    private String coursename;
     private Set<Long> students = new HashSet<>();
 
     public  ClassroomDTO(Classroom clss){
@@ -29,6 +33,8 @@ public class ClassroomDTO {
         this.dept = clss.getDept();
         this.coursecode = clss.getCoursecode();
         this.semester = clss.getSemester();
+        this.coursename = clss.getCoursename();;
+        this.session = clss.getSession();
 
         System.out.println(clss.getStudents().isEmpty());
         for (Student x: clss.getStudents()) {

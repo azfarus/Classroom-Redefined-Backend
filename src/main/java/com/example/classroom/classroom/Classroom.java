@@ -28,6 +28,10 @@ public class Classroom implements Serializable {
 
     private boolean archived;
 
+    private int session;
+
+    private String coursename;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "classroom_student",
             joinColumns = @JoinColumn(name = "classroom_id", referencedColumnName = "id"),

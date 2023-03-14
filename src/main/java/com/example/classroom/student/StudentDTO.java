@@ -31,17 +31,20 @@ public class StudentDTO  {
     private  String dept;
 
     private float cgpa;
+
+    private int session;
     private ArrayList<Long> classroom_id = new ArrayList<>();
 
 
 
     public StudentDTO(Student s) {
-
+        this.id = s.getId();
         this.studid = s.getStudid();
         this.cgpa = s.getCgpa();
         this.name = s.getName();
         this.dept = s.getDept();
         this.semester = s.getSemester();
+        this.session = s.getSession();
 
 
         System.out.println(s.getClassrooms().isEmpty());
