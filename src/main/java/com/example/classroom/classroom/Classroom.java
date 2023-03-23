@@ -3,6 +3,7 @@ package com.example.classroom.classroom;
 
 
 
+import com.example.classroom.post.Post;
 import com.example.classroom.student.Student;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,6 +38,11 @@ public class Classroom implements Serializable {
             joinColumns = @JoinColumn(name = "classroom_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"))
     private Set<Student> students = new HashSet<Student>();
+
+
+    @OneToMany(mappedBy = "classroom")
+    private Set<Post> posts;
+
 
 
 

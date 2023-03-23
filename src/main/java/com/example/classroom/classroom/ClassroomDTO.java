@@ -1,6 +1,7 @@
 package com.example.classroom.classroom;
 
 
+import com.example.classroom.post.Post;
 import com.example.classroom.student.Student;
 import lombok.Data;
 import lombok.Getter;
@@ -28,6 +29,8 @@ public class ClassroomDTO {
     private String coursename;
     private Set<Long> students = new HashSet<>();
 
+    private Set<Long> posts = new HashSet<>();
+
     public  ClassroomDTO(Classroom clss){
         this.id = clss.getId();
         this.dept = clss.getDept();
@@ -41,6 +44,10 @@ public class ClassroomDTO {
 
             students.add(x.getId());
 
+        }
+
+        for(Post p : clss.getPosts()){
+            posts.add(p.getId());
         }
     }
 }
