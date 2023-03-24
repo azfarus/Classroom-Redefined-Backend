@@ -5,6 +5,7 @@ package com.example.classroom.classroom;
 
 import com.example.classroom.post.Post;
 import com.example.classroom.student.Student;
+import com.example.classroom.teacher.Teacher;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,6 +43,10 @@ public class Classroom implements Serializable {
 
     @OneToMany(mappedBy = "classroom")
     private Set<Post> posts;
+
+    @ManyToOne
+    @JoinColumn(nullable = true)
+    private Teacher teacher;
 
 
 

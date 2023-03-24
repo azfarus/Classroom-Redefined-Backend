@@ -9,6 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginDTO {
-    private Long studentid;
+    private Long common_id;
     private String password;
 }

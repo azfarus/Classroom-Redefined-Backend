@@ -31,6 +31,8 @@ public class ClassroomDTO {
 
     private Set<Long> posts = new HashSet<>();
 
+    private Long teacher;
+
     public  ClassroomDTO(Classroom clss){
         this.id = clss.getId();
         this.dept = clss.getDept();
@@ -38,7 +40,7 @@ public class ClassroomDTO {
         this.semester = clss.getSemester();
         this.coursename = clss.getCoursename();;
         this.session = clss.getSession();
-
+        this.teacher = clss.getTeacher().getId();
         System.out.println(clss.getStudents().isEmpty());
         for (Student x: clss.getStudents()) {
 
@@ -49,5 +51,7 @@ public class ClassroomDTO {
         for(Post p : clss.getPosts()){
             posts.add(p.getId());
         }
+
+
     }
 }
