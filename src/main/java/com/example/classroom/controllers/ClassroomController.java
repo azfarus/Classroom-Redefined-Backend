@@ -6,10 +6,9 @@ import com.example.classroom.post.Post;
 import com.example.classroom.post.PostDTO;
 import com.example.classroom.post.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.Id;
 
 @RestController
 @RequestMapping("/classroom")
@@ -31,6 +30,18 @@ public class ClassroomController {
 
 
         posts.save(post);
+
+    }
+
+    @GetMapping("/getpost/{id}")
+    @ResponseBody
+    public  PostDTO get_post(@PathVariable Long id){
+        PostDTO p = new PostDTO(posts.findById(id).get());
+
+        return p;
+
+
+
 
     }
 }
