@@ -12,4 +12,6 @@ public interface StudentRepository extends JpaRepository<Student , Long> {
         Optional<Student> findStudentByStudid(Long studid);
         List<Student> findStudentsByDept(String dept);
 
+        List<Student> findStudentsByDeptEqualsIgnoreCaseAndSemester(String dept , int semester);
+
 }

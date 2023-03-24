@@ -19,7 +19,8 @@ public class ClassroomController {
     @Autowired
     private PostRepository posts;
     @PostMapping("/createpost")
-    public  void create_post(@RequestBody PostDTO pdto){
+    @ResponseBody
+    public  String create_post(@RequestBody PostDTO pdto){
         Post post = new Post();
 
         post.setTime(pdto.getTime());;
@@ -30,6 +31,7 @@ public class ClassroomController {
 
 
         posts.save(post);
+        return "OK";
 
     }
 

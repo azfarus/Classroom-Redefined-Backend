@@ -37,10 +37,7 @@ public class LoginController {
             Student s = sopt.get();;
 
             if(sopt.get().getPassword().equals(ldto.getPassword())){
-                if(sopt.get().getClassrooms().isEmpty()){
-                    sopt.get().getClassrooms().addAll(clas.findClassroomsByDeptAndSemesterAndArchived(s.getDept() , s.getSemester() , false));
-                    stud.save(sopt.get());
-                }
+
                 sdto = new StudentDTO(sopt.get());
             }
         }
