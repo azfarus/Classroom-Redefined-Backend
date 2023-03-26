@@ -3,6 +3,7 @@ package com.example.classroom.classroom;
 
 
 
+import com.example.classroom.assignment.Assignment;
 import com.example.classroom.post.Post;
 import com.example.classroom.student.Student;
 import com.example.classroom.teacher.Teacher;
@@ -12,6 +13,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -47,6 +49,10 @@ public class Classroom implements Serializable {
     @ManyToOne
     @JoinColumn(nullable = true)
     private Teacher teacher;
+
+    @OneToMany(mappedBy = "classroom")
+    private List<Assignment> assignmentsHere;
+
 
 
 

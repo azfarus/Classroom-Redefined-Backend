@@ -1,6 +1,7 @@
 package com.example.classroom.classroom;
 
 
+import com.example.classroom.assignment.Assignment;
 import com.example.classroom.post.Post;
 import com.example.classroom.student.Student;
 import lombok.Data;
@@ -8,7 +9,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -33,6 +36,8 @@ public class ClassroomDTO {
 
     private Long teacher;
 
+    private List<Long> assignmentsHereID = new ArrayList<>();
+
     public  ClassroomDTO(Classroom clss){
         this.id = clss.getId();
         this.dept = clss.getDept();
@@ -50,6 +55,10 @@ public class ClassroomDTO {
 
         for(Post p : clss.getPosts()){
             posts.add(p.getId());
+        }
+
+        for(Assignment p : clss.getAssignmentsHere()){
+            assignmentsHereID.add(p.getId());
         }
 
 
