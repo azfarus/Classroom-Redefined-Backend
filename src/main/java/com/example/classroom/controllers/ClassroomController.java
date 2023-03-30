@@ -66,9 +66,11 @@ public class ClassroomController {
     }
 
 
+
+
     @GetMapping("/getsubmission/{id}")
     @ResponseBody
-    public  SubmissionDTO get_submit(@PathVariable Long id){
+    public  SubmissionDTO get_submit(@PathVariable String id){
         SubmissionDTO p = new SubmissionDTO(submits.findById(id).get());
 
         return p;
@@ -87,7 +89,8 @@ public class ClassroomController {
     public  String create_sub(@RequestBody SubmissionDTO sdto){
         Submission sub = new Submission();
 
-
+        sub.setAssignment(assRepo.findById(sdto.getAssignmentId()).get());
+        sub.setSubmittedBy(sdto.getSubmittedBy());
         sub.setId(sdto.getId());
         sub.setInformation(sdto.getInformation());
         sub.setSubmittedOn(sdto.getSubmittedOn());
@@ -113,12 +116,13 @@ public class ClassroomController {
         sub.setDeadline(sdto.getDeadline());
         sub.setInstruction(sdto.getInstruction());
         sub.setTitle(sdto.getTitle());
-
+        sub.setNeededFiles(new ArrayList<>());
+        sub.setSubmissionsOfThis(new ArrayList<>());
         for(Long x : sdto.getNeededFilesID()){
             sub.getNeededFiles().add(fileSaves.findById(x).get());
         }
 
-        for(Long x : sdto.getSubmissionsOfThisID()){
+        for(String x : sdto.getSubmissionsOfThisID()){
             sub.getSubmissionsOfThis().add(submits.findById(x).get());
         }
         assRepo.save(sub);

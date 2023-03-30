@@ -18,13 +18,13 @@ import java.util.Set;
 @NoArgsConstructor
 public class Submission {
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO)
-    private Long id;
+    private String id;
 
     private Timestamp submittedOn;
 
     private String information;
 
+    private  String submittedBy;
 
     private float grade;
 

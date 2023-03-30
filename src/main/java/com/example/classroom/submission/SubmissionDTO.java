@@ -18,7 +18,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class SubmissionDTO {
-    private Long id;
+    private String id;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Timestamp submittedOn;
@@ -29,11 +29,13 @@ public class SubmissionDTO {
 
     private List<Long> addedFiles = new ArrayList<>();
 
+    private  String submittedBy;
     private  Long assignmentId;
     public SubmissionDTO(Submission s) {
         this.id = s.getId();
         this.submittedOn = s.getSubmittedOn();
         this.information = s.getInformation();
+        this.submittedBy = s.getSubmittedBy();
         this.assignmentId = s.getAssignment().getId();
         for(File x : s.getAddedFiles()){
             addedFiles.add(x.getId());

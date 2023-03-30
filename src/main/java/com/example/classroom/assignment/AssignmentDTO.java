@@ -36,7 +36,7 @@ public class AssignmentDTO {
     private List<Long> neededFilesID = new ArrayList<>();
 
 
-    private  List<Long> submissionsOfThisID = new ArrayList<>();
+    private  List<String> submissionsOfThisID = new ArrayList<>();
 
     private Long classroomid;
 
@@ -46,6 +46,7 @@ public class AssignmentDTO {
         this.title = ass.getTitle();
         this.instruction = ass.getInstruction();
         this.marks = ass.getMarks();
+        this.classroomid = ass.getClassroom().getId();
         for(File x : ass.getNeededFiles()){
             neededFilesID.add(x.getId());
         }
