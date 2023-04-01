@@ -4,6 +4,9 @@ package com.example.classroom.controllers;
 import com.example.classroom.assignment.Assignment;
 import com.example.classroom.assignment.AssignmentDTO;
 import com.example.classroom.assignment.AssignmentRepository;
+import com.example.classroom.attendance.Attendance;
+import com.example.classroom.attendance.AttendanceID;
+import com.example.classroom.attendance.AttendanceRepository;
 import com.example.classroom.classroom.Classroom;
 import com.example.classroom.classroom.ClassroomRepository;
 import com.example.classroom.email.EmailSender;
@@ -54,6 +57,9 @@ public class ClassroomController {
     EmailSender es ;
     @Autowired
     private FileRepository allfiles;
+
+    @Autowired
+    private AttendanceRepository presents;
     @PostMapping("/createpost")
     @ResponseBody
     public  String create_post(@RequestBody PostDTO pdto){
@@ -130,6 +136,15 @@ public class ClassroomController {
             sub.getAddedFiles().add(allfiles.findById(x).get());
         }
         submits.save(sub);
+        return "OK";
+
+    }
+
+    @PostMapping("/createattendance")
+    @ResponseBody
+    public  String create_att(@RequestBody Attendance adto){
+
+        presents.save(adto);
         return "OK";
 
     }
