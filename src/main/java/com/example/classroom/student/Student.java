@@ -23,6 +23,8 @@ public class Student  {
     private Long studid;
     private int semester;
 
+    private  String email;
+
     private String password;
     private String name;
 

@@ -5,7 +5,9 @@ import com.example.classroom.classroom.Classroom;
 import com.example.classroom.classroom.ClassroomDTO;
 import com.example.classroom.classroom.ClassroomRepository;
 import com.example.classroom.login.CourseRegDTO;
+import com.example.classroom.login.LoginDTO;
 import com.example.classroom.student.Student;
+import com.example.classroom.student.StudentDTO;
 import com.example.classroom.student.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +39,25 @@ public class PreClassroomController {
             cdto = new ClassroomDTO(copt.get());
         }
         return cdto;
+    }
+
+    @GetMapping("/student/{id}")
+    @ResponseBody
+    public StudentDTO student_fetch(@PathVariable Long id){
+        StudentDTO sdto = new StudentDTO();
+
+        sdto.setStudid((long) -1);
+
+
+        Optional<Student> sopt = stud.findById(id);
+
+
+        if(sopt.isPresent()){
+            sdto = new StudentDTO(sopt.get());
+        }
+
+
+        return sdto;
     }
 
     @GetMapping("/classroom/all")

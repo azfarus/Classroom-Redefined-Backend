@@ -28,6 +28,8 @@ public class StudentDTO  {
 
     private String name;
 
+    private  String email;
+
     private  String dept;
 
     private float cgpa;
@@ -45,6 +47,7 @@ public class StudentDTO  {
         this.dept = s.getDept();
         this.semester = s.getSemester();
         this.session = s.getSession();
+        this.email = s.getEmail();
 
 
         System.out.println(s.getClassrooms().isEmpty());

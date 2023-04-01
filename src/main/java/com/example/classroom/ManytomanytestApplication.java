@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.util.Calendar;
 import java.util.TimeZone;
 
 @SpringBootApplication
@@ -15,7 +16,7 @@ import java.util.TimeZone;
 public class ManytomanytestApplication {
 
     public static void main(String[] args) {
-
+        //System.setProperty("java.awt.headless", "false");
         SpringApplication.run(ManytomanytestApplication.class, args);
     }
 

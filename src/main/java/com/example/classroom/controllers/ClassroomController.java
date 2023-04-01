@@ -4,20 +4,29 @@ package com.example.classroom.controllers;
 import com.example.classroom.assignment.Assignment;
 import com.example.classroom.assignment.AssignmentDTO;
 import com.example.classroom.assignment.AssignmentRepository;
+import com.example.classroom.classroom.Classroom;
 import com.example.classroom.classroom.ClassroomRepository;
+import com.example.classroom.email.EmailSender;
 import com.example.classroom.file.File;
 import com.example.classroom.file.FileRepository;
 import com.example.classroom.post.Post;
 import com.example.classroom.post.PostDTO;
 import com.example.classroom.post.PostRepository;
+import com.example.classroom.student.Student;
+import com.example.classroom.student.StudentRepository;
 import com.example.classroom.submission.Submission;
 import com.example.classroom.submission.SubmissionDTO;
 import com.example.classroom.submission.SubmissionRepository;
+import com.example.classroom.teacher.Teacher;
+import com.example.classroom.teacher.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.Id;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/classroom")
@@ -37,22 +46,44 @@ public class ClassroomController {
     @Autowired
     private FileRepository fileSaves;
 
+    @Autowired
+    StudentRepository stud;
 
+    @Autowired
+    TeacherRepository teaches;
+    EmailSender es ;
     @Autowired
     private FileRepository allfiles;
     @PostMapping("/createpost")
     @ResponseBody
     public  String create_post(@RequestBody PostDTO pdto){
+
+
         Post post = new Post();
 
         post.setTime(pdto.getTime());;
         post.setPosted_by(pdto.getPosted_by());
         post.setLink(pdto.getLink());
         post.setText(pdto.getText());
-        post.setClassroom(classes.findById(pdto.getClassroom_id()).get());
+        Classroom c = classes.findById(pdto.getClassroom_id()).get();
 
 
+        post.setClassroom(c);
         posts.save(post);
+        Set<Classroom> classroomSet = new HashSet<>();
+        classroomSet.add(c);
+        List<Student> mail_students= stud.findByClassroomsIn(classroomSet);
+
+        String text = "You have a new post from " + post.getPosted_by() +" in your classroom of " + c.getCoursename() +".";
+
+
+        es = new EmailSender(mail_students , text , "New Post" );
+        Thread thread = new Thread(es);
+        thread.start();
+
+
+
+
         return "OK";
 
     }
