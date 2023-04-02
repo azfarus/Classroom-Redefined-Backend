@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AttendanceRepository extends JpaRepository<Attendance , AttendanceID> {
     long countAttendanceByClassroomid(Long ClassroomID);
-    long countAttendanceByClassroomidAndAndStudentid(Long ClassroomID , Long StudentID);
+    long countAttendanceByClassroomidAndStudentid(Long ClassroomID , Long StudentID);
     long countAttendanceByClassroomidAndStudentidAndIsPresent(Long ClassroomID , Long StudentID ,Boolean isPresent);
 }

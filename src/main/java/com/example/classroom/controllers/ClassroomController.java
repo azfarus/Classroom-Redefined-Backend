@@ -121,6 +121,26 @@ public class ClassroomController {
 
         return p;
     }
+
+
+    @GetMapping("/stat/allclasses/{classid}/{studid}")
+    @ResponseBody
+    public Float attendance_allstat(@PathVariable Long classid , @PathVariable Long studid){
+
+            Float val = (float) presents.countAttendanceByClassroomidAndStudentid(classid , studid);
+
+            return val;
+
+    }
+    @GetMapping("/stat/presentclasses/{classid}/{studid}")
+    @ResponseBody
+    public Float attendance_presentstat(@PathVariable Long classid , @PathVariable Long studid){
+
+        Float val = (float) presents.countAttendanceByClassroomidAndStudentidAndIsPresent(classid , studid , true);
+
+        return val;
+
+    }
     @PostMapping("/createsubmission")
     @ResponseBody
     public  String create_sub(@RequestBody SubmissionDTO sdto){
