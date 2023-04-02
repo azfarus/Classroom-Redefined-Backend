@@ -4,6 +4,7 @@ package com.example.classroom.controllers;
 import com.example.classroom.classroom.Classroom;
 import com.example.classroom.classroom.ClassroomDTO;
 import com.example.classroom.classroom.ClassroomRepository;
+import com.example.classroom.email.EmailSender;
 import com.example.classroom.login.CourseRegDTO;
 import com.example.classroom.login.LoginDTO;
 import com.example.classroom.student.Student;
@@ -86,6 +87,17 @@ public class PreClassroomController {
         Classroom temp_cls = classroom.get();
         temp_cls.getStudents().add(temp_student.get());
         clas.save(temp_cls);
+
+
+
+        String text = "You have been registered to " + temp_cls.getCoursename() +".";
+        List<String> mail_students = new ArrayList<>();
+
+        mail_students.add(temp_student.get().getEmail());
+
+        EmailSender es = new EmailSender(mail_students , text , "Course Registration" );
+        Thread thread = new Thread(es);
+        thread.start();
 
 
         return "Paisi";

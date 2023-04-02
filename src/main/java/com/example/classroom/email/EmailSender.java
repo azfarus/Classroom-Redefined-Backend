@@ -26,12 +26,9 @@ public class EmailSender implements Runnable {
     @Override
     public void run(){
 
-        txtEmail = new ArrayList<>();
 
-        for(Student x : txtstudEmail){
-            if(x.getEmail() != null)
-            txtEmail.add(x.getEmail());
-        }
+
+
         try{
             sendMail();
         }
@@ -52,8 +49,8 @@ public class EmailSender implements Runnable {
     private Classroom c;
 
 
-    public EmailSender(List<Student> txtEmail, String txtmsg, String txtsub ) {
-        this.txtstudEmail = txtEmail;
+    public EmailSender(List<String> txtEmail, String txtmsg, String txtsub ) {
+        this.txtEmail = txtEmail;
         this.txtmsg = txtmsg;
         this.txtsub = txtsub;
 

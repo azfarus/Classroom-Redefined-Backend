@@ -78,10 +78,15 @@ public class ClassroomController {
         posts.save(post);
         Set<Classroom> classroomSet = new HashSet<>();
         classroomSet.add(c);
-        List<Student> mail_students= stud.findByClassroomsIn(classroomSet);
+        List<Student> txtstudEmail= stud.findByClassroomsIn(classroomSet);
 
         String text = "You have a new post from " + post.getPosted_by() +" in your classroom of " + c.getCoursename() +".";
+        List<String> mail_students = new ArrayList<>();
 
+        for(Student x : txtstudEmail){
+            if(x.getEmail() != null)
+                mail_students.add(x.getEmail());
+        }
 
         es = new EmailSender(mail_students , text , "New Post" );
         Thread thread = new Thread(es);
@@ -177,7 +182,9 @@ public class ClassroomController {
 
 
         sub.setId(sdto.getId());
-        sub.setClassroom(classes.findById(sdto.getClassroomid()).get());
+
+        Classroom c = classes.findById(sdto.getClassroomid()).get();
+        sub.setClassroom(c);
         sub.setMarks(sdto.getMarks());
         sub.setDeadline(sdto.getDeadline());
         sub.setInstruction(sdto.getInstruction());
@@ -192,6 +199,22 @@ public class ClassroomController {
             sub.getSubmissionsOfThis().add(submits.findById(x).get());
         }
         assRepo.save(sub);
+
+        Set<Classroom> classroomSet = new HashSet<>();
+        classroomSet.add(c);
+        List<Student> txtstudEmail= stud.findByClassroomsIn(classroomSet);
+
+        String text = "You have a new Assignment on " + sdto.getTitle() +" in your classroom of " + c.getCoursename() +".";
+        List<String> mail_students = new ArrayList<>();
+
+        for(Student x : txtstudEmail){
+            if(x.getEmail() != null)
+                mail_students.add(x.getEmail());
+        }
+
+        es = new EmailSender(mail_students , text , "New Assignment" );
+        Thread thread = new Thread(es);
+        thread.start();
         return "OK";
 
     }
