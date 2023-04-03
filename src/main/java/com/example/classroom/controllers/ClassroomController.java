@@ -79,7 +79,7 @@ public class ClassroomController {
         Set<Classroom> classroomSet = new HashSet<>();
         classroomSet.add(c);
         List<Student> txtstudEmail= stud.findByClassroomsIn(classroomSet);
-
+        System.out.println(txtstudEmail.size() + "stud");
         String text = "You have a new post from " + post.getPosted_by() +" in your classroom of " + c.getCoursename() +".";
         List<String> mail_students = new ArrayList<>();
 

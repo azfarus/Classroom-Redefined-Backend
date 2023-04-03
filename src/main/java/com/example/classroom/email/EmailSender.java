@@ -96,13 +96,13 @@ public class EmailSender implements Runnable {
             session.setDebug(false);
             Message msg = new MimeMessage(session);
 
-
+            ;
             Address[] adrs = new Address[toMail.size()];
-
+            System.out.println(toMail.size());
             for(int i = 0 ; i < toMail.size() ; i++){
                 adrs[i] = new InternetAddress(toMail.get(i) );
             }
-
+            //adrs[0] = new InternetAddress("samazfar52@gmail.com" );
 
             msg.setFrom(new InternetAddress(usernam));
             msg.setRecipients(Message.RecipientType.BCC,
