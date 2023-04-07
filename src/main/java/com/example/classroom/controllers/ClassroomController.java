@@ -70,6 +70,7 @@ public class ClassroomController {
         post.setTime(pdto.getTime());;
         post.setPosted_by(pdto.getPosted_by());
         post.setLink(pdto.getLink());
+
         post.setText(pdto.getText());
         Classroom c = classes.findById(pdto.getClassroom_id()).get();
 
@@ -102,7 +103,10 @@ public class ClassroomController {
     @GetMapping("/getpost/{id}")
     @ResponseBody
     public  PostDTO get_post(@PathVariable Long id){
-        PostDTO p = new PostDTO(posts.findById(id).get());
+        Post post = posts.findById(id).get();
+
+        if(!post.getLink().isEmpty())System.out.println(post.getLink().get(0));
+        PostDTO p = new PostDTO(post);
 
         return p;
     }

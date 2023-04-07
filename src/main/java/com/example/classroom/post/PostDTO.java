@@ -10,6 +10,8 @@ import lombok.Setter;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Getter
@@ -26,7 +28,7 @@ public class PostDTO {
 
     private String posted_by;
 
-    private String link;
+    private List<String> link = new ArrayList<String>();
 
     private Long classroom_id;
 

@@ -10,6 +10,8 @@ import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,7 +27,9 @@ public class Post {
 
     private String posted_by;
 
-    private String link;
+
+    @ElementCollection
+    private List<String> link = new ArrayList<String>();
 
 
     @ManyToOne
