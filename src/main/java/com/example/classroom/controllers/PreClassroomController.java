@@ -7,6 +7,9 @@ import com.example.classroom.classroom.ClassroomRepository;
 import com.example.classroom.email.EmailSender;
 import com.example.classroom.login.CourseRegDTO;
 import com.example.classroom.login.LoginDTO;
+import com.example.classroom.routine.Routine;
+import com.example.classroom.routine.RoutineDTO;
+import com.example.classroom.routine.RoutineRepository;
 import com.example.classroom.student.Student;
 import com.example.classroom.student.StudentDTO;
 import com.example.classroom.student.StudentRepository;
@@ -25,6 +28,9 @@ public class PreClassroomController {
 
     @Autowired
     StudentRepository stud;
+
+    @Autowired
+    RoutineRepository routines;
     @GetMapping("/classroom/{id}")
     @ResponseBody
     public ClassroomDTO fetch_class(@PathVariable Long id){
@@ -40,6 +46,13 @@ public class PreClassroomController {
             cdto = new ClassroomDTO(copt.get());
         }
         return cdto;
+    }
+
+    @GetMapping("/routine/{id}")
+    @ResponseBody
+    public RoutineDTO fetch_Routine(@PathVariable Long id){
+        Optional<Routine> r = routines.findById(id);
+        return new RoutineDTO(r.get());
     }
 
     @GetMapping("/student/{id}")
